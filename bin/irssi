@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo /usr/bin/irssi --config=~/.config/irssi/config --home=~/.local/share/irssi $*
+/usr/bin/irssi --config=~/.config/irssi/config --home=~/.local/share/irssi $*
