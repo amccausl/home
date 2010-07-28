@@ -7,6 +7,7 @@ set prefix = /usr/local
 # Interface paths.
 set fifo_dir   = /tmp
 set socket_dir = /tmp
+set proxy_url  = http://localhost:8118
 
 set shell_cmd       = sh -c
 
@@ -181,10 +182,14 @@ set ebind     = @mode_bind global,-insert
 @cbind    :_        = %s
 
 # Page movement binds
-@cbind  j            = scroll vertical 20
-@cbind  k            = scroll vertical -20
-@cbind  h            = scroll horizontal -20
-@cbind  l            = scroll horizontal 20
+@cbind  j            = scroll vertical 20%
+@cbind  k            = scroll vertical -20%
+@cbind  h            = scroll horizontal -20%
+@cbind  l            = scroll horizontal 20%
+@cbind  <Down>       = scroll vertical 20
+@cbind  <Up>         = scroll vertical -20
+@cbind  <Left>       = scroll horizontal -20
+@cbind  <Right>      = scroll horizontal 20
 @cbind  <Page_Up>    = scroll vertical -100%
 @cbind  <Page_Down>  = scroll vertical 100%
 @cbind  <<           = scroll vertical begin
@@ -219,6 +224,8 @@ set ebind     = @mode_bind global,-insert
 
 # Web searching binds
 @cbind  gg<Google:>_         = uri http://www.google.com/search?q=\@<encodeURIComponent(%r)>\@
+@cbind  gm<Maps:>_           = uri http://maps.google.ca/maps?f=q&q=\@<encodeURIComponent(%r)>\@
+@cbind  gd<Directions:>_     = uri http://maps.google.ca/maps?f=d&source=s_d&saddr=469+maple+grove+drive,oakville,ON&daddr=\@<encodeURIComponent(%r)>\@
 @cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
 @cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
 
@@ -239,6 +246,7 @@ set ebind     = @mode_bind global,-insert
 
 # Uri opening prompts
 @cbind  o<uri:>_       = uri %s
+@cbind  :o _           = uri %s
 # Or have it load the current uri into the keycmd for editing
 @cbind  O<uri:\@uri>_  = uri %s
 
@@ -277,7 +285,7 @@ set follow_hint_keys = 0123456789
 #set follow_hint_keys = qwerty
 #set follow_hint_keys = asdfghjkl;
 #set follow_hint_keys = thsnd-rcgmvwb/;789aefijkopquxyz234
-@cbind  fl*  = script @scripts_dir/follow.js '@follow_hint_keys %s'
+@cbind  f*  = script @scripts_dir/follow.js '@follow_hint_keys %s'
 
 # Form filler binds
 # This script allows you to configure (per domain) values to fill in form
@@ -311,18 +319,18 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  gi<index:>_     = event GOTO_TAB %s
 
 # Preset loading
-set preset = event PRESET_TABS
-@cbind  gs<preset save:>_   = @preset save %s
-@cbind  glo<preset load:>_  = @preset load %s
-@cbind  gd<preset del:>_    = @preset del %s
-@cbind  gli                 = @preset list
+#set preset = event PRESET_TABS
+#@cbind  gs<preset save:>_   = @preset save %s
+#@cbind  glo<preset load:>_  = @preset load %s
+#@cbind  gd<preset del:>_    = @preset del %s
+#@cbind  gli                 = @preset list
 
 # === Context menu items =====================================================
 
 # Default context menu
-menu_add Google = set uri = http://google.com
-menu_add Go Home = set uri = @home
-menu_separator separator_1
+#menu_add Google = set uri = http://google.com
+#menu_add Go Home = set uri = @home
+#menu_separator separator_1
 menu_add Quit uzbl = exit
 
 # Link context menu
