@@ -91,6 +91,7 @@ chatnets = {
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "#coffeescript"; chatnet = "freenode"; autojoin = "No"; },
+  { name = "#awesome"; chatnet = "oftc"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; }
 );
 
