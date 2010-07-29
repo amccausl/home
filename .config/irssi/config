@@ -4,9 +4,11 @@ servers = (
   { address = "irc.open-ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
   { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
   { address = "irc.undernet.org"; chatnet = "Undernet"; port = "6667"; },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; }, 
+  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
   { address = "irc.quakenet.org"; chatnet = "QuakeNet"; port = "6667"; },
   { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
+  { address = "irc.gnu.org"; chatnet = "freenode"; port = "6667"; },
+  { address = "irc.linux.org"; chatnet = "freenode"; port = "6667"; },
   { address = "irc.gamesurge.net"; chatnet = "GameSurge"; port = "6667"; },
   { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
   { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
@@ -39,14 +41,20 @@ chatnets = {
     max_kicks = "4";
     max_msgs = "3";
     max_whois = "30";
-  }; 
+  };
   QuakeNet = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
   };
-  OFTC = {   
+  OFTC = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  freenode = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
@@ -77,10 +85,12 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
+  Ubuntu = { type = "IRC"; };
 };
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
+  { name = "#coffeescript"; chatnet = "freenode"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; }
 );
 
@@ -244,4 +254,12 @@ statusbar = {
       };
     };
   };
+};
+settings = {
+  core = {
+    real_name = "amccausl";
+    user_name = "amccausl";
+    nick = "amccausl";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
 };

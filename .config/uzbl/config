@@ -200,7 +200,7 @@ set ebind     = @mode_bind global,-insert
 
 # Navigation binds
 @cbind  b   = back
-@cbind  m   = forward
+@cbind  v   = forward
 @cbind  S   = stop
 @cbind  r   = reload
 @cbind  R   = reload_ign_cache
@@ -228,6 +228,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  gd<Directions:>_     = uri http://maps.google.ca/maps?f=d&source=s_d&saddr=469+maple+grove+drive,oakville,ON&daddr=\@<encodeURIComponent(%r)>\@
 @cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
 @cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
+@cbind  dict<Dictionary:>_   = uri http://dictionary.reference.com/browse/\@<encodeURIComponent(%r)>\@
 
 # Handy binds
 # Set function shortcut
@@ -273,7 +274,9 @@ set ebind     = @mode_bind global,-insert
 # Bookmark inserting binds
 @cbind <Ctrl>b<tags:>_  = sh 'echo -e "$6 %s" >> $XDG_DATA_HOME/uzbl/bookmarks'
 # Or use a script to insert a bookmark.
-@cbind  B  = spawn @scripts_dir/insert_bookmark.sh
+#@cbind  B  = spawn @scripts_dir/insert_bookmark.sh
+@cbind :marks   = set uri = http://delicious.com/alex_mccausland
+@cbind m   = js javascript:(function(){f='http://delicious.com/save?url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title)+'&v=5&';a=function(){if(!window.open(f+'noui=1&jump=doclose','deliciousuiv5','location=yes,links=no,scrollbars=no,toolbar=no,width=550,height=550'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})();
 
 # Bookmark/history loading
 @cbind  U  = spawn @scripts_dir/load_url_from_history.sh
