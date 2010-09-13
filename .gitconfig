@@ -1,0 +1,17 @@
+[user]
+	name = Alex McCausland
+	email = alex.mccausland@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+  up = pull origin
+  st = status
+  di = diff
+  co = checkout
+  ci = commit
+  br = branch
+  sta = stash
+[core]
+  pager = less +/---
