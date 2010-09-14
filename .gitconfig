@@ -13,5 +13,6 @@
   ci = commit
   br = branch
   sta = stash
+  ls = ls-files
 [core]
   pager = less +/---
