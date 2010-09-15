@@ -1,0 +1,29 @@
+#!/usr/bin/php
+<?php
+
+$table = $_SERVER['argv'][1];
+
+$headers = trim(fgets(STDIN));
+$headers = explode('|', $headers);
+
+$colString = implode(',', $headers);
+
+while( !feof( STDIN ) )
+{
+	$line = explode('|', trim(fgets(STDIN)));
+
+	if( count($line) != count($headers) )
+		continue;
+
+	
+	for( $i = 0; $i < count($line); $i++ )
+	{
+		// if is null or is money
+        if( $line[$i] == 'NULL' || preg_match( '/^[0-9]+\.[0-9]+$/', $line[$i] ) )
+			$line[$i] = $line[$i];
+        else
+			// Should use mysql_real_escape_string
+			$line[$i] = "'" . addslashes( $line[$i] ) . "'";
+	}
+	echo "INSERT INTO [$table] ($colString) VALUES (" . implode( ",", $line ) . ");\n";
+}
