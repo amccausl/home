@@ -1,18 +1,22 @@
 [user]
 	name = Alex McCausland
-	email = alex.mccausland@gmail.com
+	email = alex.mccausland@teambuy.ca
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 [alias]
-  up = pull origin
-  st = status
-  di = diff
-  co = checkout
-  ci = commit
-  br = branch
-  sta = stash
-  ls = ls-files
+    up = pull origin
+    st = status
+    di = diff
+    co = checkout
+    ci = commit
+    br = branch
+    sta = stash
+    ls = ls-files
 [core]
-  pager = less +/---
+    pager = less +/---
+    editor = vim
+[apply]
+    whitespace = strip
+
