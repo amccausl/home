@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 exec xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --rotate normal --output DVI-I-1 --mode 1920x1080 --pos 1280x0 --rotate normal --output HDMI-1 --off
+exec feh --bg-center Downloads/hd-colorful-abstract-wallpaper.jpg
 
 set $mod Mod4
 
@@ -164,19 +165,23 @@ bar {
 
 workspace_auto_back_and_forth yes
 
-# Set up workspaces
+# Set up workspaces on alternating desktops
 workspace 1 output VGA-1
 workspace 2 output DVI-I-1
 workspace 3 output VGA-1
 workspace 4 output DVI-I-1
 workspace 5 output VGA-1
 workspace 6 output DVI-I-1
+workspace 7 output VGA-1
+workspace 8 output DVI-I-1
+workspace 9 output VGA-1
 workspace 10 output DVI-I-1
 
 # Start firefox on 4
+assign [class="^java-lang-Thread$" instance="^sun-awt-X11-XFramePeer$"] → 2
 assign [class="^Firefox$" instance="^Toplevel$"] → 3
 assign [class="^Firefox$"] → 4
 
-exec roxterm -e screen -c ~/.config/screen/.screenrc
+#exec roxterm -e screen -c ~/.config/screen/.screenrc
+exec netbeans
 exec firefox
-exec chromium-browser
