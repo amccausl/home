@@ -10,7 +10,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 force_xinerama yes
-exec feh --bg-center images/wallpapers/wallpaper-2075405.jpg images/wallpapers/wallpaper-2073393.png images/wallpapers/wallpaper-2062581.jpg images/wallpapers/wallpaper-2073442.jpg
 exec xmms2tray
 
 set $mod Mod4
@@ -40,7 +39,7 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+d exec dmenu_run
 
 # Lock the system
-bindsym $mod+x exec slock
+bindsym $mod+x exec i3lock -c 000000 -d
 
 # change focus
 bindsym $mod+j focus left
@@ -171,14 +170,29 @@ bar {
 
 workspace_auto_back_and_forth yes
 
-workspace 1 output xinerama-2
-workspace 2 output xinerama-3
+# 4 monitor setup
+#exec feh --bg-center images/wallpapers/wallpaper-2075405.jpg images/wallpapers/wallpaper-2073393.png images/wallpapers/wallpaper-2062581.jpg images/wallpapers/wallpaper-2073442.jpg
+#workspace 1 output xinerama-2
+#workspace 2 output xinerama-3
+#workspace 3 output xinerama-0
+#workspace 4 output xinerama-2
+#workspace 5 output xinerama-3
+#workspace 6 output xinerama-0
+#workspace 7 output xinerama-2
+#workspace 8 output xinerama-3
+#workspace 9 output xinerama-0
+#workspace 10 output xinerama-1
+
+# 3 monitor setup
+exec feh --bg-center images/wallpapers/1920x1080/wallpaper-1923544.png images/wallpapers/1280x1024/wallpaper-2062581.jpg images/wallpapers/1600x1200/wallpaper-2298518.jpg
+workspace 1 output xinerama-1
+workspace 2 output xinerama-2
 workspace 3 output xinerama-0
-workspace 4 output xinerama-2
-workspace 5 output xinerama-3
+workspace 4 output xinerama-1
+workspace 5 output xinerama-2
 workspace 6 output xinerama-0
-workspace 7 output xinerama-2
-workspace 8 output xinerama-3
+workspace 7 output xinerama-1
+workspace 8 output xinerama-2
 workspace 9 output xinerama-0
 workspace 10 output xinerama-1
 
