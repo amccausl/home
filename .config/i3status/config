@@ -1,46 +1,32 @@
 general {
     colors = true
-    color_good = "#00FF00"
-    interval = 1
+    interval = 5
 }
 
 order += "disk /"
 order += "disk /home/dev"
-order += "run_watch DHCP"
 order += "ethernet eth0"
-order += "volume master"
 order += "load"
 order += "time"
 
 ethernet eth0 {
     # if you use %speed, i3status requires root privileges
     format_up = "E: %ip (%speed)"
-	format_down = "E: down"
-}
-
-run_watch DHCP {
-    pidfile = "/var/run/dhclient*.pid"
+    format_down = "E: down"
 }
 
 time {
-	format = "%Y-%m-%d %H:%M:%S"
-}
-
-volume master {
-    format = "♪: %volume"
-    device = "default"
-    mixer = "Master"
-    mixer_idx = 0
+    format = "%Y-%m-%d %H:%M:%S"
 }
 
 load {
-	format = "%1min"
+    format = "%1min"
 }
 
 disk "/" {
-	format = "%free"
+    format = "%free"
 }
 
 disk "/home/dev" {
-	format = "%free"
+    format = "%free"
 }

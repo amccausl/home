@@ -2,4 +2,7 @@
 *.mkv
 *.mp4
 *.zip
-
+*.part
+downloads/
+images/
+music/
