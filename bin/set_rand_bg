@@ -1,0 +1,8 @@
+#!/bin/bash
+
+get_rand_bg () {
+    local FILE=`ls content/wallpapers/$1 | while read x; do echo "$RANDOM:$x"; done | sort -n | cut -d':' -f2- | head -n1`
+    echo content/wallpapers/$1/$FILE
+}
+
+feh --bg-center `get_rand_bg 1280x1024` `get_rand_bg 1920x1080`
