@@ -32,9 +32,6 @@ a2enmod proxy_http
 a2enmod rewrite
 a2enmod ssl
 
-echo "10.10.10.90     hydra" >> /etc/hosts
-echo "127.0.0.1       dev.teambuy.ca" >> /etc/hosts
-
 # Mono
 aptitude install -y mono-runtime
 
@@ -55,11 +52,3 @@ aptitude install -y netbeans
 
 aptitude install -y privoxy
 
-# teambuy
-mkdir /var/teambuy
-mkdir /var/teambuy/v2-log
-mkdir /var/teambuy/v2-log/server
-mkdir /var/teambuy/v2-log/perf
-mkdir /var/teambuy/v2-log/request
-cp -r /var/teambuy/v2-log /var/teambuy/v1-log
-chown -R www-data /var/teambuy

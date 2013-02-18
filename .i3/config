@@ -11,6 +11,7 @@
 
 force_xinerama yes
 exec xmms2tray
+exec set_rand_bg
 
 set $mod Mod4
 
