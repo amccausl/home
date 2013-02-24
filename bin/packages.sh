@@ -25,7 +25,7 @@ dpkg -i skype-debian_4.0.0.8-1_amd64.deb
 # Development application
 aptitude install -y git git-gui git-cvs git-svn git-email gitk darcs mercurial subversion subversion-tools bzr bzrtools cvs thunar-vcs-plugin
 aptitude install -y openssh-server
-aptitude install -y apache2 memcached curl rsync cronolog mysql-client
+aptitude install -y apache2 memcached curl rsync cronolog mysql-client sqlite3 sqlitebrowser
 # aptitude install -y mysql-server phpmyadmin
 a2enmod proxy
 a2enmod proxy_http
