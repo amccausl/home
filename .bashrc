@@ -14,7 +14,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=250000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -106,8 +106,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+EDITOR=vi
+export EDITOR
+
 . ~/bin/nvm/nvm.sh
 
 setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us
 
-HISTFILESIZE=250000
