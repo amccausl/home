@@ -1,8 +1,85 @@
-#!/bin/bash
+#!/usr/bin/php
+<?php
 
-get_rand_bg () {
-    local FILE=`ls content/wallpapers/$1 | while read x; do echo "$RANDOM:$x"; done | sort -n | cut -d':' -f2- | head -n1`
-    echo content/wallpapers/$1/$FILE
+class i3
+{
+    private $socket;
+
+    function __construct( $socket = NULL )
+    {
+        if( ! $socket )
+            $socket = trim( `i3 --get-socketpath` );
+
+        // TODO: error checking on socket
+
+        //$this->socket = fsockopen( "unix://$socket" );
+    }
+
+    function send_message( $type, $payload )
+    {
+        $message = "i3-ipc".pack( 'LL', strlen( $type.$payload ), 0 ).$type.$payload;
+
+        $hex = bin2hex( $message );
+        var_dump( $hex );
+    }
+
+    function get_workspaces()
+    {
+        $workspaces = json_decode( `i3-msg -t GET_WORKSPACES`, TRUE );
+
+        var_dump( $workspaces );
+    }
+
+    function get_outputs()
+    {
+        return json_decode( `i3-msg -t GET_OUTPUTS`, TRUE );
+    }
+
+    function get_tree()
+    {
+        $tree = json_decode( `i3-msg -t GET_TREE`, TRUE );
+
+        var_dump( $tree );
+    }
+
+    function get_marks()
+    {
+        $marks = json_decode( `i3-msg -t GET_MARKS`, TRUE );
+
+        var_dump( $marks );
+    }
+
+    function get_bar_config()
+    {
+        $bar_config = json_decode( `i3-msg -t GET_BAR_CONFIG`, TRUE );
+
+        var_dump( $bar_config );
+    }
+
+    function set_rand_wallpaper()
+    {
+        $cmd = 'feh --bg-center';
+
+        $outputs = $this->get_outputs();
+
+        foreach( $outputs as $output )
+        {
+            if( ! $output['active'] )
+                continue;
+
+            $dimensions = $output['rect']['width'].'x'.$output['rect']['height'];
+
+            $files = glob( "{$_SERVER['HOME']}/images/wallpapers/{$dimensions}/*" );
+
+            // TODO: check files for errors
+
+            $i = array_rand( $files );
+            $cmd .= ' '.escapeshellarg( $files[ $i ] );
+        }
+        `$cmd`;
+    }
 }
 
-feh --bg-center `get_rand_bg 1280x1024` `get_rand_bg 1920x1080`
+$i3 = new i3();
+
+$i3->set_rand_wallpaper();
