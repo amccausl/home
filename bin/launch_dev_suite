@@ -1,0 +1,31 @@
+#!/bin/bash
+
+i3 workspace 8
+
+# Tail web application logs
+sleep 0.5; i3 exec "roxterm -e sudo tail -f /var/log/apache2/error.log"
+sleep 0.5; i3 layout tabbed;
+#sleep 0.5; i3 split h;
+#i3 exec "roxterm -e sudo tail -f /var/log/apache2/error.log"
+#sleep 0.5
+#i3 focus parent
+#sleep 0.5
+#i3 focus parent
+#sleep 0.5
+
+# Start and monitor mongo service
+sleep 0.5; i3 exec "roxterm -e ~/bin/mongodb-linux-x86_64-v2.2-2013-03-01/bin/mongod"
+sleep 0.5; i3 split v
+sleep 0.5; i3 exec "roxterm -e ~/bin/mongodb-linux-x86_64-v2.2-2013-03-01/bin/mongo"
+sleep 0.5; i3 focus parent
+
+# Start and monitor redis service
+sleep 0.5; i3 exec "roxterm -e redis-server"
+sleep 0.5; i3 split v
+sleep 0.5; i3 exec "roxterm -e redis-cli"
+sleep 0.5; i3 focus parent
+
+# TODO
+# cabal-dev ghci
+# yesod devel
+
