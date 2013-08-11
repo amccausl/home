@@ -1,0 +1,6 @@
+[submodule ".nvm"]
+	path = .nvm
+	url = git://github.com/creationix/nvm.git
+[submodule ".config/sublime-text-3/Packages/AngularJS"]
+	path = .config/sublime-text-3/Packages/AngularJS
+	url = git://github.com/angular-ui/AngularJS-sublime-package.git
