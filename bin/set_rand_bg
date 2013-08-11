@@ -64,12 +64,17 @@ class i3
 
         foreach( $outputs as $output )
         {
+            //print_r( $output );
             if( ! $output['active'] )
                 continue;
 
             $dimensions = $output['rect']['width'].'x'.$output['rect']['height'];
 
+            //print_r( "{$_SERVER['HOME']}/images/wallpapers/{$dimensions}/*" );
+
             $files = glob( "{$_SERVER['HOME']}/images/wallpapers/{$dimensions}/*" );
+
+            //print_r( $files );
 
             // TODO: check files for errors
 
@@ -77,6 +82,15 @@ class i3
             $cmd .= ' '.escapeshellarg( $files[ $i ] );
         }
         `$cmd`;
+    }
+
+    /** Restore the state of the WM before the restart, currently just wallpaper */
+    function restore()
+    {
+        $feh_cmd = trim( file_get_contents( "{$_SERVER['HOME']}/.fehbg" ) );
+
+        if( $feh_cmd )
+            `$feh_cmd`;
     }
 }
 
