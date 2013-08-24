@@ -1,10 +1,10 @@
 [user]
-	name = Alex McCausland
-	email = alex.mccausland@gmail.com
+    name = Alex McCausland
+    email = alex.mccausland@gmail.com
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [alias]
     up = pull origin
     st = status
@@ -20,4 +20,6 @@
     editor = vim
 [apply]
     whitespace = strip
+[push]
+    default = current
 
