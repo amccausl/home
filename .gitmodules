@@ -4,3 +4,6 @@
 [submodule ".config/sublime-text-3/Packages/AngularJS"]
 	path = .config/sublime-text-3/Packages/AngularJS
 	url = git://github.com/angular-ui/AngularJS-sublime-package.git
+[submodule ".config/sublime-text-3/Packages/LESS"]
+	path = .config/sublime-text-3/Packages/LESS
+	url = git://github.com/danro/LESS-sublime.git
