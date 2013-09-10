@@ -1,9 +1,12 @@
 [submodule ".nvm"]
 	path = .nvm
 	url = git://github.com/creationix/nvm.git
-[submodule ".config/sublime-text-3/Packages/AngularJS"]
+[submodule "sublime-text-3/AngularJS"]
 	path = .config/sublime-text-3/Packages/AngularJS
 	url = git://github.com/angular-ui/AngularJS-sublime-package.git
-[submodule ".config/sublime-text-3/Packages/LESS"]
+[submodule "sublime-text-3/LESS"]
 	path = .config/sublime-text-3/Packages/LESS
 	url = git://github.com/danro/LESS-sublime.git
+[submodule "sublime-text-3/GitGutter"]
+	path = .config/sublime-text-3/Packages/GitGutter
+	url = git://github.com/jisaacks/GitGutter.git
