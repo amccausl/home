@@ -1,9 +1,19 @@
+# Some common types we don't want to track
 *.swp
 *.mkv
 *.mp4
 *.zip
 *.part
-downloads/
-images/
-music/
-videos/
+
+# Common root folders
+/downloads
+/images
+/music
+/videos
+/workspace
+/dev
+/.cache
+
+# Junk configs
+/.config/google-chrome
+
