@@ -62,6 +62,15 @@ class i3
 
         $outputs = $this->get_outputs();
 
+        for( $i = 0; $i < count( $outputs ); $i++ )
+        {
+            $outputs[ $outputs[ $i ]['name'] ] = $outputs[ $i ];
+            unset( $outputs[ $i ] );
+        }
+
+        ksort( $outputs );
+        //print_r( $outputs );
+
         foreach( $outputs as $output )
         {
             if( ! $output['active'] )
