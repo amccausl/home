@@ -90,6 +90,9 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Frequent typos
+alias gti='git'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -109,7 +112,7 @@ fi
 EDITOR=vi
 export EDITOR
 
-. ~/bin/nvm/nvm.sh
+source ~/bin/nvm/nvm.sh
+export PATH=$PATH:./node_modules/.bin
 
 setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us
-
