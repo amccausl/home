@@ -80,10 +80,13 @@ class i3
 
             $files = glob( "{$_SERVER['HOME']}/images/wallpapers/{$dimensions}/*" );
 
-            // TODO: check files for errors
+            if( ! $files ) {
+                echo "no wallpapers of dimension {$dimensions}\n";
+            } else {
+                $i = array_rand( $files );
+                $cmd .= ' '.escapeshellarg( $files[ $i ] );
+            }
 
-            $i = array_rand( $files );
-            $cmd .= ' '.escapeshellarg( $files[ $i ] );
         }
         `$cmd`;
     }
