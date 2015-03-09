@@ -1,0 +1,75 @@
+'.source.coffee':
+  'Log Variable':
+    prefix: 'vlog'
+    body:
+      '''
+      console.info '$1', $1
+      '''
+  'catch err':
+    prefix: 'cerr'
+    body: 'return callback err if err'
+  'Express Route':
+    prefix: 'route'
+    body:
+      '''
+      method: '${1:GET}'
+      path: '/$2'
+      auth: '${1:admin}'
+      handler: ( req, res, next ) ->
+        return next new NotImplementedError()
+      '''
+  '$db.findOne':
+    prefix: 'findone'
+    body:
+      '''
+      $1_query =
+        _id: ObjectID( $1_id )
+
+      $db.collection('$1s').findOne $1_query, ( err, $1_doc ) ->
+        return callback new MongoDbError err if err
+        return callback new NotFoundError() if ! $1_doc
+      '''
+  '$db.find':
+    prefix: 'find'
+    body:
+      '''
+      $db.collection('$1s').find $1_query, ( err, $1_docs ) ->
+        return callback new MongoDbError err if err
+      '''
+  '$db.update':
+    prefix: 'update'
+    body:
+      '''
+      $db.collection('$1s').update $1_criteria, $1_update, ( err, updated_count ) ->
+        return callback new MongoDbError err if err
+      '''
+  '$db.findAndModify':
+    prefix: 'modify'
+    body:
+      '''
+      $db.collection('$1s').findAndModify $1_query, {}, $1_update, { 'new': ${2:true} }, ( err, $1_doc ) ->
+        return callback new MongoDbError err if err
+      '''
+  'method':
+    prefix: 'md'
+    body:
+      '''
+      # @method $1
+      $1: ( $2 ) ->
+      '''
+  'async.auto2':
+    prefix: 'aa2'
+    body:
+      '''
+      tasks =
+        $1: ( callback ) ->
+          return callback null, $1
+        $2: [ '$1', ( callback, results ) ->
+          { $1 } = results
+          return callback null, $2
+        ]
+
+      async.auto tasks, ( err, results ) ->
+        return callback err if err
+        { $1, $2 } = results
+      '''
