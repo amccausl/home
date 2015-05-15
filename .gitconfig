@@ -15,6 +15,10 @@
     sta = stash
     ls = ls-files
     fo = fetch origin
+    pf = push --force
+    fr = flow feature rebase
+    develop = checkout develop
+    master = checkout master
 [core]
     pager = less +/---
     editor = vim

@@ -112,6 +112,8 @@ fi
 EDITOR=vi
 export EDITOR
 
+export ATOM_HOME=~/.config/atom
+
 source ~/bin/nvm/nvm.sh
 export PATH=$PATH:./node_modules/.bin
 

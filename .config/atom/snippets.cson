@@ -61,15 +61,83 @@
     prefix: 'aa2'
     body:
       '''
-      tasks =
-        $1: ( callback ) ->
-          return callback null, $1
-        $2: [ '$1', ( callback, results ) ->
-          { $1 } = results
+      $1 =
+        $2: ( callback ) ->
           return callback null, $2
+        $3: [ '$2', ( callback, results ) ->
+          { $2 } = results
+          return callback null, $3
         ]
 
       async.auto tasks, ( err, results ) ->
         return callback err if err
-        { $1, $2 } = results
+        { $2, $3 } = results
+      '''
+  'async.auto3':
+    prefix: 'aa3'
+    body:
+      '''
+      $1 =
+        $2: ( callback ) ->
+          return callback null, $2
+        $3: [ '$2', ( callback, results ) ->
+          { $2 } = results
+          return callback null, $3
+        ]
+        $4: [ '$2', '$3', ( callback, results ) ->
+          { $2, $3 } = results
+          return callback null, $4
+        ]
+
+      async.auto tasks, ( err, results ) ->
+        return callback err if err
+        { $2, $3, $4 } = results
+      '''
+  'async.task':
+    prefix: 'aat'
+    body:
+      '''
+      $1: ( callback ) ->
+        $2
+        return callback null, $1
+      '''
+  'async.task1':
+    prefix: 'aat1'
+    body:
+      '''
+      $1: [ '$2', ( callback, results ) ->
+        { $2 } = results
+        $3
+        return callback null, $1
+      ]
+      '''
+  'async.task2':
+    prefix: 'aat2'
+    body:
+      '''
+      $1: [ '$2', '$3', ( callback, results ) ->
+        { $2, $3 } = results
+        return callback null, $1
+      ]
+      '''
+  'async.task3':
+    prefix: 'aat3'
+    body:
+      '''
+      $1: [ '$2', '$3', '$4', ( callback, results ) ->
+        { $2, $3, $4 } = results
+        return callback null, $1
+      ]
+      '''
+  'script':
+    prefix: 'scrp'
+    body:
+      '''
+      # @method $1
+      $1: ( $2 ) ->
+        deferred = Q.defer()
+
+        deferred.resolve()
+
+        return deferred.promise
       '''
