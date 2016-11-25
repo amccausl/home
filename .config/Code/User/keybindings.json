@@ -1,0 +1,11 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+{ "key": "alt+down",              "command": "scrollLineDown",
+                                     "when": "editorTextFocus" },
+{ "key": "alt+up",                "command": "scrollLineUp",
+                                     "when": "editorTextFocus" },
+{ "key": "ctrl+down",             "command": "editor.action.moveLinesDownAction",
+                                     "when": "editorTextFocus && !editorReadonly" },
+{ "key": "ctrl+up",               "command": "editor.action.moveLinesUpAction",
+                                     "when": "editorTextFocus && !editorReadonly" }
+]
