@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "editor.renderControlCharacters": true,
+  "editor.renderIndentGuides": true,
+  "editor.renderWhitespace": "boundary",
+  "files.trimTrailingWhitespace": true
+}
