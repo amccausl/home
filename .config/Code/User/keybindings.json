@@ -7,5 +7,13 @@
 { "key": "ctrl+down",             "command": "editor.action.moveLinesDownAction",
                                      "when": "editorTextFocus && !editorReadonly" },
 { "key": "ctrl+up",               "command": "editor.action.moveLinesUpAction",
-                                     "when": "editorTextFocus && !editorReadonly" }
+                                     "when": "editorTextFocus && !editorReadonly" },
+{ "key": "ctrl+j",                "command": "editor.action.joinLines",
+                                     "when": "editorTextFocus && !editorReadonly" },
+{ "key": "alt+shift+l",           "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+                                     "when": "editorTextFocus && editorHasSelection" },
+{ "key": "shift+alt+f",           "command": "editor.action.formatDocument" },
+{ "key": "ctrl+m",                "command": "editor.action.jumpToBracket",
+                                     "when": "editorTextFocus" },
+{ "key": "ctrl+shift+c",          "command": "workbench.action.files.copyPathOfActiveFile" }
 ]
