@@ -1,3 +1,5 @@
 #!/bin/bash
 
-i3-php set_rand_bg
+wallpaper_dir=`xdg-user-dir PICTURES`/wallpapers
+
+feh --image-bg black --bg-center `shuf -n1 -e $wallpaper_dir/2560x1080/*` `shuf -n1 -e $wallpaper_dir/1080x1920/*`

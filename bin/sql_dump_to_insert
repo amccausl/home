@@ -15,7 +15,6 @@ while( !feof( STDIN ) )
 	if( count($line) != count($headers) )
 		continue;
 
-	
 	for( $i = 0; $i < count($line); $i++ )
 	{
 		// if is null or is money
