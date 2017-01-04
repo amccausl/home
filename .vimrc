@@ -1,10 +1,12 @@
 syntax on
 set bg=dark
+set nu
 
+set nowrap
 set smartindent
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set pastetoggle=<F2>
 "set spell
 

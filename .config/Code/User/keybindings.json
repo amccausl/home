@@ -1,5 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+{ "key": "f11",                   "command": "workbench.action.toggleZenMode" },
 { "key": "alt+down",              "command": "scrollLineDown",
                                      "when": "editorTextFocus" },
 { "key": "alt+up",                "command": "scrollLineUp",

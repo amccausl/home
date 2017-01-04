@@ -17,8 +17,7 @@
   "Log Variable": {
     "prefix": "vlog",
     "body": [
-      "console.info '$1', $1",
-      "$0"
+      "console.info '$1', $1$0"
     ]
   },
   "Catch err with callback": {
