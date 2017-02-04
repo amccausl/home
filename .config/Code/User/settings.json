@@ -7,9 +7,11 @@
   "editor.tabSize": 2,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "workbench.editor.showIcons": false,
-  "workbench.editor.showTabCloseButton": false,
-  "workbench.editor.enablePreview": false,
   "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false
+  "telemetry.enableCrashReporter": false,
+  "window.menuBarVisibility": "toggle",
+  "workbench.editor.showIcons": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.welcome.enabled": false
 }
