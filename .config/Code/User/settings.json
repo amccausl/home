@@ -1,4 +1,5 @@
 {
+  "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
   "editor.renderIndentGuides": true,
   "editor.renderLineHighlight": "all",
