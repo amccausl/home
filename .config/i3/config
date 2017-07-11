@@ -32,6 +32,8 @@ bindsym XF86AudioPause exec xmms2 toggle
 
 bindsym $mod+Shift+P exec set_rand_bg
 
+bindsym $mod+z exec toggle_touchpad
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
