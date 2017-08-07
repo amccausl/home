@@ -28,11 +28,15 @@ floating_modifier $mod
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 #bindsym XF86AudioMute exec amixer set Master toggle
-bindsym XF86AudioPause exec xmms2 toggle
+# bindsym XF86AudioPause exec xmms2 toggle
 
 bindsym $mod+Shift+P exec set_rand_bg
 
 bindsym $mod+z exec toggle_touchpad
+# Capture screen-shot of active window
+bindsym Print exec import -window `xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}'` `xdg-user-dir DOWNLOAD`/`date +%FT%T`.png
+# Capture screen-shot of all visible
+bindsym $mod+Print exec import -window root `xdg-user-dir DOWNLOAD`/`date +%FT%T`.png
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
