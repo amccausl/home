@@ -10,7 +10,12 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 exec restore_bg
+
+# Network Manager
 exec nm-applet
+
+# PulseAudio Mixer
+exec pnmixer
 
 set $mod Mod4
 set $screen1 eDP-1
@@ -31,6 +36,9 @@ bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 # bindsym XF86AudioPause exec xmms2 toggle
 
 bindsym $mod+Shift+P exec set_rand_bg
+
+bindsym $mod+F7 exec gnome-disks
+bindsym $mod+F8 exec arandr
 
 bindsym $mod+z exec toggle_touchpad
 # Capture screen-shot of active window
