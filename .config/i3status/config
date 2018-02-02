@@ -3,8 +3,10 @@ general {
     interval = 5
 }
 
-order += "disk /"
-order += "disk /home/dev"
+order += "tztime utc"
+order += "tztime fra"
+# order += "disk /"
+# order += "disk /home/dev"
 order += "ethernet eth0"
 order += "load"
 order += "time"
@@ -17,6 +19,18 @@ ethernet eth0 {
 
 time {
     format = "%Y-%m-%d %H:%M:%S"
+}
+
+tztime utc {
+    format = "%time"
+    format_time = "%Y-%m-%dT%H:%M:%SZ"
+    timezone = "UTC"
+}
+
+tztime fra {
+    format = "%time"
+    format_time = "FR %H:%M %a"
+    timezone = "Europe/Paris"
 }
 
 load {

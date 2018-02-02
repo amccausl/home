@@ -2,8 +2,8 @@
 
 i3-msg "append_layout ~/.config/i3/workspace-deploy.json"
 gnome-terminal --window -e "ssh gata-back1"
-gnome-terminal --window -e "ssh gata-back2"
 gnome-terminal --window -e "ssh gata-back3"
-gnome-terminal --window -e "ssh gata-back4"
 gnome-terminal --window -e "ssh gata-back5"
+gnome-terminal --window -e "ssh gata-back2"
+gnome-terminal --window -e "ssh gata-back4"
 gnome-terminal --window -e "ssh gata-back6"
