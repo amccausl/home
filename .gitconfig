@@ -17,13 +17,16 @@
     fo = fetch origin
     pf = push --force
     rd = rebase develop
+    recent = recent-branches
+    rl = reflog
     dev = checkout develop
     master = checkout master
 [core]
-    pager = less +/---
     editor = vim
 [apply]
     whitespace = strip
 [push]
     default = current
+[branch]
+    #autoSetupRebase = always
 
