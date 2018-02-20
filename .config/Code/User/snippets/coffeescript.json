@@ -27,15 +27,29 @@
       "$0"
     ]
   },
+  "Catch mongo err with callback": {
+    "prefix": "merr",
+    "body": [
+      "return callback new MongoDbError err if err",
+      "$0"
+    ]
+  },
+  "nextTick callback": {
+    "prefix": "ntc",
+    "body": [
+      "process.nextTick () -> callback null$0"
+    ]
+  },
   "$db.find Array": {
     "prefix": "finda",
     "body": [
-      "$1_query =",
+      "$1s_query =",
       "  $2",
       "",
-      "\\$db.collection('$1s').find( $1_query ).toArray ( err, $1_docs ) ->",
+      "\\$db.collection( '$1s' ).find( $1s_query ).toArray ( err, $1_docs ) ->",
       "  return callback new MongoDbError err if err",
-      "$0"
+      "  $0",
+      "  return callback null, $1_docs"
     ],
     "description": "Create standard mongo find boilerplate with toArray"
   },
@@ -45,9 +59,25 @@
       "$1_query =",
       "  _id: ObjectID( $1_id )",
       "",
-      "\\$db.collection('$1s').find( $1_query ).toArray ( err, $1_docs ) ->",
+      "\\$db.collection( '$1s' ).find( $1_query ).toArray ( err, $1_docs ) ->",
       "  return callback new MongoDbError err if err",
       "$0"
+    ],
+    "description": "Create standard mongo find boilerplate with cursor"
+  },
+  "$db.find forEach": {
+    "prefix": "findf",
+    "body": [
+      "$1s_query =",
+      "  $2",
+      "",
+      "\\$db.collection( '$1s' ).find( $1s_query ).forEach(",
+      "  ( $1_doc ) ->",
+      "    ",
+      "  ( err ) ->",
+      "    return callback new MongoDbError err if err",
+      "    $0",
+      ")"
     ],
     "description": "Create standard mongo find boilerplate with cursor"
   },
@@ -55,12 +85,49 @@
     "prefix": "findone",
     "body": [
       "$1_query =",
-      "  _id: ObjectID( $1_id )",
+      "  '_id': $1_object_id",
       "",
-      "\\$db.collection('$1s').find( $1_query ).limit( 1 ).next ( err, $1_doc ) ->",
+      "\\$db.collection( '$1s' ).find( $1_query ).limit( 1 ).next ( err, $1_doc ) ->",
       "  return callback new MongoDbError err if err",
       "  return callback new NotFoundError() if ! $1_doc",
       "$0"
+    ],
+    "description": "Create standard mongo findOne boilerplate"
+  },
+  "$db.insertOne": {
+    "prefix": "insertone",
+    "body": [
+      "\\$db.collection( '$1s' ).insertOne $1_doc, ( err, result ) ->",
+      "  return callback new MongoDbError err if err?",
+      "  return callback new Error('insert failed') if result.insertedCount != 1",
+      "  $1_doc._id = result.insertedId",
+      "  $0"
+    ],
+    "description": "Create standard mongo findOne boilerplate"
+  },
+  "$db.updateOne": {
+    "prefix": "updateone",
+    "body": [
+      "$1_criteria =",
+      "  '_id': $1_object_id",
+      "",
+      "\\$db.collection( '$1s' ).updateOne $1_criteria, $1_update, ( err, result ) ->",
+      "  return callback new MongoDbError err if err?",
+      "  return callback new Error('update failed') if result.modifiedCount != 1",
+      "  $0"
+    ],
+    "description": "Create standard mongo findOne boilerplate"
+  },
+  "$db.replaceOne": {
+    "prefix": "replaceone",
+    "body": [
+      "$1_criteria =",
+      "  '_id': $1_object_id",
+      "",
+      "\\$db.collection( '$1s' ).replaceOne $1_criteria, $1_doc, { upsert: true }, ( err, result ) ->",
+      "  return callback new MongoDbError err if err?",
+      "  return callback new Error('update failed') if result.modifiedCount != 1",
+      "  $0"
     ],
     "description": "Create standard mongo findOne boilerplate"
   },
