@@ -23,11 +23,11 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.hovers.enabled": false,
+  "search.smartCase": true,
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "window.menuBarVisibility": "toggle",
   "workbench.editor.showIcons": false,
   "workbench.editor.enablePreview": false,
-  "workbench.editor.tabCloseButton": "off",
-  "workbench.welcome.enabled": false
+  "workbench.editor.tabCloseButton": "off"
 }

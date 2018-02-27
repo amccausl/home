@@ -41,7 +41,7 @@
     ]
   },
   "$db.find Array": {
-    "prefix": "finda",
+    "prefix": "dbfa",
     "body": [
       "$1s_query =",
       "  $2",
@@ -53,20 +53,27 @@
     ],
     "description": "Create standard mongo find boilerplate with toArray"
   },
-  "$db.find Cursor": {
-    "prefix": "findc",
+  "$db.find forEach partial": {
+    "prefix": "dbfpf",
     "body": [
-      "$1_query =",
-      "  _id: ObjectID( $1_id )",
+      "$1s_query =",
+      "  $2",
       "",
-      "\\$db.collection( '$1s' ).find( $1_query ).toArray ( err, $1_docs ) ->",
-      "  return callback new MongoDbError err if err",
-      "$0"
+      "$1s_projection =",
+      "  $3",
+      "",
+      "\\$db.collection( '$1s' ).find( $1s_query ).project( $1s_projection ).forEach(",
+      "  ( $1_partial_doc ) ->",
+      "    ",
+      "  ( err ) ->",
+      "    return callback new MongoDbError err if err",
+      "    $0",
+      ")"
     ],
     "description": "Create standard mongo find boilerplate with cursor"
   },
   "$db.find forEach": {
-    "prefix": "findf",
+    "prefix": "dbff",
     "body": [
       "$1s_query =",
       "  $2",
@@ -82,20 +89,36 @@
     "description": "Create standard mongo find boilerplate with cursor"
   },
   "$db.findOne": {
-    "prefix": "findone",
+    "prefix": "dbfo",
     "body": [
       "$1_query =",
-      "  '_id': $1_object_id",
+      "  '_id': $2",
       "",
-      "\\$db.collection( '$1s' ).find( $1_query ).limit( 1 ).next ( err, $1_doc ) ->",
+      "\\$db.collection( '$1s' ).findOne $1_query, ( err, $1_doc ) ->",
       "  return callback new MongoDbError err if err",
       "  return callback new NotFoundError() if ! $1_doc",
-      "$0"
+      "  $0"
     ],
     "description": "Create standard mongo findOne boilerplate"
   },
+  "$db.findOnePartial": {
+    "prefix": "dbfpo",
+    "body": [
+      "$1_query =",
+      "  '_id': $2",
+      "",
+      "$1_projection =",
+      "  $3",
+      "",
+      "\\$db.collection( '$1s' ).findOnePartial $1_query, $1_projection, ( err, $1_partial_doc ) ->",
+      "  return callback new MongoDbError err if err",
+      "  return callback new NotFoundError() if ! $1_partial_doc",
+      "  $0"
+    ],
+    "description": "Create mongo findOne partial helper boilerplate"
+  },
   "$db.insertOne": {
-    "prefix": "insertone",
+    "prefix": "dbio",
     "body": [
       "\\$db.collection( '$1s' ).insertOne $1_doc, ( err, result ) ->",
       "  return callback new MongoDbError err if err?",
@@ -106,10 +129,13 @@
     "description": "Create standard mongo findOne boilerplate"
   },
   "$db.updateOne": {
-    "prefix": "updateone",
+    "prefix": "dbuo",
     "body": [
       "$1_criteria =",
       "  '_id': $1_object_id",
+      "",
+      "$1_update =",
+      "  $2",
       "",
       "\\$db.collection( '$1s' ).updateOne $1_criteria, $1_update, ( err, result ) ->",
       "  return callback new MongoDbError err if err?",
@@ -119,7 +145,7 @@
     "description": "Create standard mongo findOne boilerplate"
   },
   "$db.replaceOne": {
-    "prefix": "replaceone",
+    "prefix": "dbro",
     "body": [
       "$1_criteria =",
       "  '_id': $1_object_id",
