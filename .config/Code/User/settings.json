@@ -6,6 +6,7 @@
   "editor.renderWhitespace": "all",
   "editor.rulers": [ 80 ],
   "editor.tabSize": 2,
+  "extensions.showRecommendationsOnlyOnDemand": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "gitlens.advanced.messages": {
@@ -23,8 +24,11 @@
   "gitlens.blame.avatars": false,
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
+  "gitlens.keymap": "chorded",
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.hovers.enabled": false,
+  "gitlens.statusBar.alignment": "left",
+  "nodeTdd.glob": "{src,test}/**/*.{mjs,js,ts}",
   "search.smartCase": true,
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
@@ -33,10 +37,10 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.tabCloseButton": "off",
   "window.zoomLevel": -1,
-  "gitlens.statusBar.alignment": "left",
-  "gitlens.keymap": "chorded",
   "workbench.statusBar.feedback.visible": false,
+  "workbench.startupEditor": "newUntitledFile",
   "[markdown]": {
-    "editor.foldingStrategy": "indentation"
+    "editor.foldingStrategy": "indentation",
+    "editor.wordWrap": "off"
   }
 }

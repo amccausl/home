@@ -39,4 +39,9 @@ alias screen="screen -c ~/.config/screen/config"
 
 # Default configs for other
 alias ngrok="ngrok http 80"
+alias hap="sudo haproxy -f ops/haproxy/local.cfg"
+
+# OneLocal
+alias bball="npm run bump && npm run install-all && npm run build-all"
+alias ball="npm run install-all && npm run build-all"
 
