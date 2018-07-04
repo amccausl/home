@@ -6,13 +6,24 @@
 *.part
 
 # Common root folders
+/desktop
 /downloads
-/images
-/music
-/videos
-/workspace
+/content
 /dev
+/lib
+/pkg
+/workspace
 /.cache
+
+# Local State
+/dump.rdb
+/.bash_history
+/.fehbg
+/.node_history
+/.rediscli_history
+/.steam*
+/.sudo_as_admin_successful
+/.v8flags*
 
 # Junk configs
 /.config/google-chrome
