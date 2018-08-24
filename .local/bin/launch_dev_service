@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo service mongod start
+sudo /home/amccausl/bin/haproxy -f /home/amccausl/dev/gataweb/ops/haproxy/local.cfg
+redis-server
+

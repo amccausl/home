@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wallpaper_dir=`xdg-user-dir PICTURES`/wallpapers
+
+feh --image-bg black --bg-center `shuf -n1 -e $wallpaper_dir/*`

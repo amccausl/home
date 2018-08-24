@@ -1,7 +1,11 @@
 #!/bin/bash
 
-apt-get update
-aptitude -y safe-upgrade
+apt update
+apt install net-tools
+
+# haproxy
+apt install libssl-dev
+# make TARGET=generic USE_OPENSSL=1
 
 # use uname to determine right package
 aptitude install -y linux-headers-$(uname -r)
@@ -9,13 +13,12 @@ aptitude install -y expect
 
 # System applications
 aptitude install -y i3 i3lock i3status xclip
-aptitude install -y vim tofrodos gnotime
+aptitude install -y vim tofrodos gnotime pwgen
 aptitude install -y roxterm rox-filer
 aptitude install -y feh vlc xmms2 xmms2-plugin-flac promoe
 aptitude install -y libreoffice libreoffice-gtk apvlv
 aptitude install -y ia32-libs-gtk
 aptitude install -y chromium
-dpkg -i skype-debian_4.0.0.8-1_amd64.deb
 
 # TODO: update /etc/slim.conf
 # set sessions, default_user, focus_password
@@ -51,4 +54,6 @@ aptitude install -y build-essential debhelper
 aptitude install -y netbeans
 
 aptitude install -y privoxy
+
+echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
 
