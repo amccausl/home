@@ -1,0 +1,14 @@
+#!/bin/sh
+
+VERSION=$1
+
+cd ~/pkg
+wget https://download-installer.cdn.mozilla.net/pub/devedition/releases/$VERSION/linux-x86_64/en-US/firefox-$VERSION.tar.bz2
+# @todo test file exists
+tar xf firefox-$VERSION.tar.bz2
+mv firefox ~/.local/lib/firefox-$VERSION
+cd ~/.local/bin
+ln -s ../lib/firefox-$VERSION/firefox firefox-$VERSION
+unlink firefox-de
+ln -s firefox-$VERSION firefox-de
+
