@@ -1,0 +1,28 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+exec restore_bg
+
+# Network Manager
+exec nm-applet
+
+# PulseAudio Mixer
+exec pnmixer
+
+set $mod Mod4
+set $screen1 HDMI-0
+set $screen2 DVI-0
+
+# 2 monitor setup
+workspace 1 output $screen1
+workspace 2 output $screen1
+workspace 3 output $screen1
+workspace 4 output $screen1
+workspace 5 output $screen1
+workspace 6 output $screen1
+workspace 7 output $screen2
+workspace 8 output $screen2
+workspace 9 output $screen2
+workspace 10 output $screen2
+

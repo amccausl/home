@@ -1,0 +1,4 @@
+#!/bin/bash
+
+hostname=`hostname`
+cat ~/.config/i3/config-$hostname ~/.config/i3/config-core > ~/.config/i3/config
