@@ -1,6 +1,4 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# thor i3 config file (v4)
 
 exec restore_bg
 

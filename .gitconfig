@@ -15,8 +15,10 @@
     sta = stash
     ls = ls-files
     fo = fetch origin
-    pf = push --force
+    pf = push --force-with-lease
+    lr = pull --rebase
     rd = rebase develop
+    rr = rebase "release/gata#0.97.0"
     recent = recent-branches
     rl = reflog
     dev = checkout develop

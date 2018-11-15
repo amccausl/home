@@ -72,6 +72,9 @@ xterm*|rxvt*)
     ;;
 esac
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -98,6 +101,29 @@ export EDITOR
 export NVM_DIR="$HOME/.local/lib/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$PATH:./node_modules/.bin
 
-setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us
+export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:~/.local/bin:./node_modules/.bin:./bin
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/amccausl/dev/deploy/serverless/scrapper/node_modules/tabtab/.completions/serverless.bash ] && . /home/amccausl/dev/deploy/serverless/scrapper/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/amccausl/dev/deploy/serverless/scrapper/node_modules/tabtab/.completions/sls.bash ] && . /home/amccausl/dev/deploy/serverless/scrapper/node_modules/tabtab/.completions/sls.bash
+# added by Anaconda3 5.3.0 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/amccausl/dev/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/amccausl/dev/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/amccausl/dev/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/amccausl/dev/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<

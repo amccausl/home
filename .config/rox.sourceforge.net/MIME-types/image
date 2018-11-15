@@ -1,2 +1,0 @@
-#! /bin/sh
-exec /usr/bin/feh -. "$(dirname "$@")" --start-at "$@"

@@ -5,16 +5,39 @@ general {
 
 order += "tztime utc"
 order += "tztime fra"
+order += "tztime pak"
 # order += "disk /"
-# order += "disk /home/dev"
-order += "ethernet eth0"
+# order += "ethernet eth0"
+# order += "ethernet enx106530c37eac"
+order += "battery 0"
+order += "wireless wlp2s0"
 order += "load"
 order += "time"
 
+battery 0 {
+  format = "%status %percentage %remaining"
+  format_down = "No Battery"
+  last_full_capacity = true
+  integer_battery_capacity = true
+  path = "/sys/class/power_supply/BAT%d/uevent"
+  low_threshold = 20
+  threshold_type = time
+}
+
+ethernet enx106530c37eac {
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
+
 ethernet eth0 {
-    # if you use %speed, i3status requires root privileges
-    format_up = "E: %ip (%speed)"
-    format_down = "E: down"
+  # if you use %speed, i3status requires root privileges
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
+
+wireless wlp2s0 {
+  format_up = "W: (%essid:%quality:%ip)"
+  format_down = "W: down"
 }
 
 time {
@@ -31,6 +54,12 @@ tztime fra {
     format = "%time"
     format_time = "FR %H:%M %a"
     timezone = "Europe/Paris"
+}
+
+tztime pak {
+    format = "%time"
+    format_time = "PK %H:%M %a"
+    timezone = "Etc/GMT-5"
 }
 
 load {

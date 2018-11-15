@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo "start:" $* >> ~/.config/gnotime/log.txt

@@ -1,5 +1,0 @@
-#! /bin/sh
-
-cd "`dirname "$@"`"
-unrar x -y "`basename "$@"`"
-

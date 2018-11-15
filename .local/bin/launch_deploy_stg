@@ -1,5 +1,5 @@
 #!/bin/bash
 
 i3-msg "append_layout ~/.config/i3/workspace-deploy-stg.json"
-gnome-terminal --window -e "ssh gata-stg-back1"
-gnome-terminal --window -e "ssh gata-stg-back2"
+gnome-terminal --window -e "ssh ol-stg-back1"
+gnome-terminal --window -e "ssh ol-stg-back2"
