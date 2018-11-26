@@ -92,12 +92,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
-EDITOR=vi
-export EDITOR
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$PATH:$HOME/.local/bin"
+fi
+
+export EDITOR=vi
+
+export NPM_CONF_USERCONFIG=~/.config/npmrc
 
 export NVM_DIR="$HOME/.local/lib/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:./node_modules/.bin:./bin
 
 setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us
