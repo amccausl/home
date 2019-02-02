@@ -1,14 +1,35 @@
-#!/bin/sh
+#!/bin/bash
 
 VERSION=$1
 
+if [[ $VERSION =~ ^[0-9]+\.[0-9]+b[0-9]+$ ]]; then
+  BUILD="devedition"
+  BIN="firefox-de"
+elif [[ $VERSION =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
+  BUILD="firefox"
+  BIN="firefox"
+else
+  echo "Version not recognized"
+  exit 1
+fi
+
+if [ -f ~/.local/bin/firefox-$VERSION ]; then
+  echo "Already installed"
+  exit 1
+fi
+
+# Download and decompress the package
 cd ~/pkg
-wget https://download-installer.cdn.mozilla.net/pub/devedition/releases/$VERSION/linux-x86_64/en-US/firefox-$VERSION.tar.bz2
-# @todo test file exists
-tar xf firefox-$VERSION.tar.bz2
-mv firefox ~/.local/lib/firefox-$VERSION
+if [ ! -f firefox-$VERSION.tar.bz2 ]; then
+  wget https://download-installer.cdn.mozilla.net/pub/$BUILD/releases/$VERSION/linux-x86_64/en-US/firefox-$VERSION.tar.bz2
+fi
+tar xf firefox-$VERSION.tar.bz2 -C ~/.local/lib
+mv ~/.local/lib/firefox ~/.local/lib/firefox-$VERSION
+
+# Link the bins
 cd ~/.local/bin
 ln -s ../lib/firefox-$VERSION/firefox firefox-$VERSION
-unlink firefox-de
-ln -s firefox-$VERSION firefox-de
-
+if [ -f $BIN ]; then
+  unlink $BIN
+fi
+ln -s firefox-$VERSION $BIN
