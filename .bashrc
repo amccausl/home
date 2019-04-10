@@ -106,3 +106,7 @@ export NVM_DIR="$HOME/.local/lib/nvm"
 export PATH=$PATH:./node_modules/.bin:./bin
 
 setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us
+
+# Remap caps lock to enter
+setxkbmap -option caps:none
+xmodmap -e "keycode 66 = Linefeed"
