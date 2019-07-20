@@ -1,9 +1,11 @@
 #!/bin/bash
 
 i3-msg "append_layout ~/.config/i3/workspace-deploy.json"
-gnome-terminal --window -e "ssh gata-back1"
-gnome-terminal --window -e "ssh gata-back3"
-gnome-terminal --window -e "ssh gata-back5"
-gnome-terminal --window -e "ssh gata-back2"
-gnome-terminal --window -e "ssh gata-back4"
-gnome-terminal --window -e "ssh gata-back6"
+i3-sensible-terminal --window -e "ssh ol-prd-back1"
+i3-sensible-terminal --window -e "ssh ol-prd-back3"
+i3-sensible-terminal --window -e "ssh ol-prd-back5"
+i3-sensible-terminal --window -e "ssh ol-prd-back2"
+i3-sensible-terminal --window -e "ssh ol-prd-back4"
+i3-sensible-terminal --window -e "ssh ol-prd-back6"
+i3-sensible-terminal --window -e "ssh ol-prd-adm1"
+i3-sensible-terminal --window -e "ssh ol-prd-adm2"
