@@ -80,7 +80,6 @@ pub mod p2 {
 }
 
 pub mod p3 {
-
   pub fn run( number: usize ) -> usize {
     let sieve = primal::Sieve::new( 600_851_475_143 );
     let factors = sieve.factor( number );
@@ -93,18 +92,115 @@ pub mod p3 {
     return 29;
   }
 
+  // #[cfg(test)]
+  // mod tests {
+  //   use super::*;
+
+  //   #[test]
+  //   fn run_sample() {
+  //     assert_eq!( 29, run( 13195 ) );
+  //   }
+
+  //   #[test]
+  //   fn run_solution() {
+  //     assert_eq!( 0, run( 600_851_475_143 ) );
+  //   }
+  // }
+}
+
+pub mod p5 {
+  pub fn run( limit: u64 ) -> u64 {
+    let mut product: u64 = 1;
+    let mut factors = vec![];
+
+    for x in 1..limit + 1 {
+      let mut outstanding = x;
+      for factor in &factors {
+        if outstanding % factor == 0 {
+          outstanding /= factor;
+        }
+      }
+      if outstanding != 1 {
+        factors.push( outstanding );
+        product *= outstanding;
+      }
+    }
+    return product;
+  }
+
   #[cfg(test)]
   mod tests {
     use super::*;
 
     #[test]
     fn run_sample() {
-      assert_eq!( 29, run( 13195 ) );
+      assert_eq!( 2520, run( 10 ) );
     }
 
     #[test]
     fn run_solution() {
-      assert_eq!( 0, run( 600_851_475_143 ) );
+      assert_eq!( 232_792_560, run( 20 ) );
+    }
+  }
+}
+
+pub mod p6 {
+  pub fn run( limit: u64 ) -> u64 {
+    let mut sum = 0;
+    let mut square_sum = 0;
+    for i in 1..limit + 1 {
+      sum += i;
+      square_sum += i * i;
+    }
+    return ( sum * sum ) - square_sum;
+  }
+
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+
+    #[test]
+    fn run_sample() {
+      assert_eq!( 2640, run( 10 ) );
+    }
+
+    #[test]
+    fn run_solution() {
+      assert_eq!( 25164150, run( 100 ) );
+    }
+  }
+}
+
+pub mod p9 {
+  pub fn run( sum: u64 ) -> Option<u64> {
+    for b in 2..sum / 2 {
+      for a in (1..b).rev() {
+        let c = sum - a - b;
+        let c_sq = c * c;
+        let ab_sq = a * a + b * b;
+        if ab_sq == c_sq {
+          return Some( a * b * c );
+        }
+        if ab_sq < c_sq {
+          break;
+        }
+      }
+    }
+    return None
+  }
+
+  #[cfg(test)]
+  mod tests {
+    use super::*;
+
+    #[test]
+    fn run_sample() {
+      assert_eq!( Some( 60 ), run( 12 ) );
+    }
+
+    #[test]
+    fn run_solution() {
+      assert_eq!( Some( 31_875_000 ), run( 1000 ) );
     }
   }
 }
