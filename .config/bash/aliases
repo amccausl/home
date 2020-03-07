@@ -37,12 +37,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Frequent typos
 alias gti='git'
+alias gitpn='git push —-set-upstream origin $(git branch --show-current)'
 
 # XDG config directory overrides
 alias screen="screen -c ~/.config/screen/config"
 
 # Default configs for other
 alias ngrok="ngrok http 80"
-
-alias npx="npm run"
 
