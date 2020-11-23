@@ -25,6 +25,8 @@
     editor = vim
 [apply]
     whitespace = strip
+[pull]
+    ff = only
 [push]
     default = current
 [branch]
